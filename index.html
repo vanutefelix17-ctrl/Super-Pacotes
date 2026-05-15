@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CONEXÃO BARATA</title>
+<title>SUPER PACOTES</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -224,8 +224,8 @@ font-size:15px;
 <div class="w-12 h-12 rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white">
 
 <img
-src="https://i.postimg.cc/RVj6ddhZ/AFAF6E32-088E-48C4-A2AC-83861DCD9ED3.png"
-alt="Conexão Barata"
+src="https://i.postimg.cc/D0JXV9kZ/4021C5CD-B38A-47B6-B440-198456BA316A.png"
+alt="Super Pacotes"
 class="w-full h-full object-cover"
 >
 
@@ -234,11 +234,11 @@ class="w-full h-full object-cover"
 <div>
 
 <h1 class="font-black text-[20px]">
-CONEXÃO BARATA
+SUPER PACOTES
 </h1>
 
 <p class="text-[12px] text-[#64748B]">
-Atendimento com AGENTE VINHA
+Atendimento com LAURA ALMOÇO
 </p>
 
 </div>
@@ -263,9 +263,9 @@ Atendimento com AGENTE VINHA
 
 <div class="card p-5">
 
-<div class="flex items-center justify-between">
+<div class="grid grid-cols-3 gap-4">
 
-<div class="flex items-center gap-3">
+<div class="flex flex-col items-center text-center gap-2">
 
 <div id="step1" class="step step-active">
 1
@@ -285,9 +285,7 @@ Escolha o plano
 
 </div>
 
-<div class="h-[2px] flex-1 bg-[#E2E8F0] mx-4"></div>
-
-<div class="flex items-center gap-3">
+<div class="flex flex-col items-center text-center gap-2">
 
 <div id="step2" class="step step-inactive">
 2
@@ -307,9 +305,7 @@ Verifique os dados
 
 </div>
 
-<div class="h-[2px] flex-1 bg-[#E2E8F0] mx-4"></div>
-
-<div class="flex items-center gap-3">
+<div class="flex flex-col items-center text-center gap-2">
 
 <div id="step3" class="step step-inactive">
 3
@@ -379,17 +375,16 @@ class="w-full h-[58px] rounded-[18px] border border-[#CBD5E1] px-5 mt-5 outline-
 
 <!-- PACOTES -->
 
-<div class="mt-10">
-
-<h2 class="text-[24px] font-bold mb-5">
-Pacotes de Internet
-</h2>
-
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
 <div onclick="selecionarPacote('6GB','50MT',this)" class="card pacote-card p-6">
 <h2 class="text-[32px] font-bold">6GB</h2>
 <p class="text-[#64748B] mt-2">50MT</p>
+</div>
+
+<div onclick="selecionarPacote('9GB','80MT',this)" class="card pacote-card p-6">
+<h2 class="text-[32px] font-bold">9GB</h2>
+<p class="text-[#64748B] mt-2">80MT</p>
 </div>
 
 <div onclick="selecionarPacote('15GB','100MT',this)" class="card pacote-card p-6">
@@ -400,6 +395,21 @@ Pacotes de Internet
 <div onclick="selecionarPacote('26GB','200MT',this)" class="card pacote-card p-6">
 <h2 class="text-[32px] font-bold">26GB</h2>
 <p class="text-[#64748B] mt-2">200MT</p>
+</div>
+
+<div onclick="selecionarPacote('39GB','300MT',this)" class="card pacote-card p-6">
+<h2 class="text-[32px] font-bold">39GB</h2>
+<p class="text-[#64748B] mt-2">300MT</p>
+</div>
+
+<div onclick="selecionarPacote('51GB','400MT',this)" class="card pacote-card p-6">
+<h2 class="text-[32px] font-bold">51GB</h2>
+<p class="text-[#64748B] mt-2">400MT</p>
+</div>
+
+<div onclick="selecionarPacote('80GB','500MT',this)" class="card pacote-card p-6 col-span-2 md:col-span-1">
+<h2 class="text-[32px] font-bold">80GB</h2>
+<p class="text-[#64748B] mt-2">500MT</p>
 </div>
 
 </div>
@@ -630,11 +640,11 @@ Pagamento via eMola
 </p>
 
 <h2 class="text-center text-[32px] font-black mt-5">
-874475405
+874756220
 </h2>
 
 <p class="text-center text-[#64748B] mt-2">
-VINHA MARIO
+LAURA ALMOÇO
 </p>
 
 <button
@@ -726,6 +736,8 @@ Enviar comprovante
 
 </button>
 
+<div id="statusPagamento"></div>
+
 </div>
 
 </div>
@@ -742,16 +754,16 @@ Enviar comprovante
 
 <h2 class="text-[52px] font-black">
 
-CONEXÃO
+SUPER
 <span class="text-[#00D563]">
-BARATA
+PACOTES
 </span>
 
 </h2>
 
 <p class="text-[#D7DFEA] text-[15px] leading-8 mt-6 max-w-[700px] mx-auto">
 
-CONEXÃO BARATA atua há mais de 3 anos no mercado de ativações de internet móvel em Moçambique, oferecendo pacotes Vodacom e Movitel com atendimento rápido, suporte profissional e milhares de clientes atendidos diariamente através a AGENTE VINHA.
+SUPER PACOTES atua há mais de 3 anos no mercado de ativações de internet móvel em Moçambique, oferecendo pacotes Vodacom e Movitel com atendimento rápido, suporte profissional e milhares de clientes atendidos diariamente através a AGENTE LAURA.
 
 </p>
 
@@ -1103,190 +1115,81 @@ reader.readAsDataURL(file);
 
 function enviarComprovante(){
 
-const file =
-document.getElementById("comprovante").files[0];
+const status = document.getElementById("statusPagamento");
 
-if(!file){
+status.innerHTML = `
+<div class="mt-6 bg-yellow-50 border border-yellow-300 rounded-[18px] p-5">
 
-toast("Envie o comprovante.");
+<div class="flex items-center gap-3">
 
-return;
+<div class="spinner"></div>
 
-}
+<div>
 
-toast("Comprovante enviado para análise.");
+<h2 class="font-bold text-[18px]">
+Analisando comprovante
+</h2>
 
-}
+<p class="text-[#64748B] text-[14px] mt-1">
+Aguarde enquanto validamos o pagamento
+</p>
 
-function toast(msg){
+</div>
 
-const div =
-document.createElement("div");
+</div>
 
-div.className = "toast";
-
-div.innerHTML = `
-<i class="fa-solid fa-circle-check"></i>
-<span>${msg}</span>
+</div>
 `;
 
-document.body.appendChild(div);
-
 setTimeout(() => {
 
-div.remove();
+status.innerHTML = `
+<div class="mt-6 bg-red-50 border border-red-300 rounded-[18px] p-5">
 
-},3000);
+<div class="flex items-center gap-3">
 
-}
+<div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
 
-const ativacoes = [
+<i class="fa-solid fa-xmark text-red-600 text-[22px]"></i>
 
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 6GB para o número 87****521 válidos por 30 dias."
-},
+</div>
 
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 15GB para o número 84****221 válidos por 30 dias."
-},
+<div>
 
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 26GB para o número 86****903 válidos por 30 dias."
-},
+<h2 class="font-bold text-[18px] text-red-600">
+Pagamento recusado
+</h2>
 
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 39GB para o número 85****102 válidos por 30 dias."
-},
+<p class="text-[#64748B] text-[14px] mt-1">
+Não foi possível validar automaticamente o comprovante.
+</p>
 
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 51GB para o número 87****663 válidos por 30 dias."
-},
+</div>
 
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 80GB para o número 84****918 válidos por 30 dias."
-},
+</div>
 
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 9GB para o número 85****447 válidos por 30 dias."
-},
+</div>
+`;
 
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 6GB para o número 86****310 válidos por 30 dias."
-},
+toast("Comprovante recusado.");
 
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 15GB para o número 84****774 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 26GB para o número 87****185 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 39GB para o número 85****920 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 25GB + chamadas e SMS ilimitadas para o número 86****771 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 38GB + chamadas e SMS ilimitadas para o número 85****456 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 70GB + chamadas e SMS ilimitadas para o número 84****619 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 51GB para o número 87****240 válidos por 30 dias."
-}
-
-];
-
-function mostrarAtivacao(){
-
-const toast =
-document.getElementById("saleToast");
-
-const title =
-document.getElementById("saleTitle");
-
-const random =
-ativacoes[
-Math.floor(
-Math.random() * ativacoes.length
-)
-];
-
-title.innerText =
-random.mensagem;
-
-toast.style.border =
-`2px solid ${random.cor}`;
-
-title.style.color =
-random.cor;
-
-toast.classList.remove("hidden");
-
-setTimeout(() => {
-
-toast.classList.add("hidden");
-
-},4000);
+},5000);
 
 }
-
-setInterval(() => {
-
-mostrarAtivacao();
-
-},12000);
 
 setTimeout(() => {
 
 mostrarAtivacao();
 
 },3000);
-
+  
 </script>
 
 <!-- ATIVAÇÕES RECENTES -->
 
 <div
 id="liveSales"
-class="fixed bottom-5 left-5 z-50"
+class="fixed bottom-5 left-5 z-10 pointer-events-none"
 >
 
 <div
@@ -1324,6 +1227,8 @@ Agora mesmo
 </div>
 
 </div>
+
+</script>
 
 </body>
 </html>
