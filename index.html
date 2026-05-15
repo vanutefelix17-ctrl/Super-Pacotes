@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CONEXÃO BARATA</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+
+body{
+background:linear-gradient(180deg,#F8FAFC,#EEF3F8);
+font-family:Inter,sans-serif;
+color:#0F172A;
+}
+
+.card{
+background:white;
+border:1px solid #E2E8F0;
+border-radius:24px;
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(15,23,42,.08);
+}
+
+.btn{
+height:58px;
+border-radius:18px;
+font-weight:700;
+font-size:16px;
+transition:.2s;
+}
+
+.btn-primary{
+background:#00D563;
+color:white;
+box-shadow:0 10px 30px rgba(0,213,99,.25);
+}
+
+.btn-outline{
+border:1px solid #CBD5E1;
+background:white;
+}
+
+.hidden{
+display:none;
+}
+
+.spinner{
+width:22px;
+height:22px;
+border:3px solid #CBD5E1;
+border-top-color:#00D563;
+border-radius:999px;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+.step{
+width:34px;
+height:34px;
+border-radius:999px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+font-weight:700;
+}
+
+.step-active{
+background:#00D563;
+color:white;
+}
+
+.step-inactive{
+background:#E2E8F0;
+color:#64748B;
+}
+
+.pacote-card{
+position:relative;
+overflow:hidden;
+cursor:pointer;
+}
+
+.pacote-card.active{
+transform:scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.badge-check{
+position:absolute;
+top:14px;
+right:14px;
+width:30px;
+height:30px;
+border-radius:999px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+font-weight:700;
+color:white;
+}
+
+.upload-area{
+border:2px dashed #CBD5E1;
+border-radius:24px;
+background:#F8FAFC;
+height:220px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:.2s;
+}
+
+.upload-area:hover{
+border-color:#00D563;
+background:#F0FFF7;
+}
+
+.toast{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#0F172A;
+color:white;
+padding:16px 20px;
+border-radius:18px;
+display:flex;
+align-items:center;
+gap:10px;
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+z-index:9999;
+animation:fade .25s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.progress-line{
+height:12px;
+background:#E2E8F0;
+border-radius:999px;
+overflow:hidden;
+}
+
+.progress-line div{
+height:100%;
+width:70%;
+background:linear-gradient(
+90deg,
+#00D563,
+#22C55E
+);
+animation:progress 2s linear infinite;
+border-radius:999px;
+}
+
+@keyframes progress{
+
+0%{
+margin-left:-70%;
+}
+
+100%{
+margin-left:100%;
+}
+
+}
+
+@media(max-width:768px){
+
+.card{
+border-radius:20px;
+}
+
+.btn{
+height:54px;
+font-size:15px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="sticky top-0 z-50 bg-white border-b border-[#E2E8F0]">
+
+<div class="max-w-5xl mx-auto px-4 h-[72px] flex items-center justify-between">
+
+<div class="flex items-center gap-3">
+
+<div class="w-12 h-12 rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white">
+
+<img
+src="https://i.postimg.cc/RVj6ddhZ/AFAF6E32-088E-48C4-A2AC-83861DCD9ED3.png"
+alt="Conexão Barata"
+class="w-full h-full object-cover"
+>
+
+</div>
+
+<div>
+
+<h1 class="font-black text-[20px]">
+CONEXÃO BARATA
+</h1>
+
+<p class="text-[12px] text-[#64748B]">
+Atendimento com AGENTE VINHA
+</p>
+
+</div>
+
+</div>
+
+<div class="flex items-center gap-2 text-[13px] text-[#64748B]">
+
+<i class="fa-solid fa-shield-halved text-[#00D563]"></i>
+
+<span>SSL Seguro</span>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- STEPS -->
+
+<section class="max-w-5xl mx-auto px-4 mt-6">
+
+<div class="card p-5">
+
+<div class="flex items-center justify-between">
+
+<div class="flex items-center gap-3">
+
+<div id="step1" class="step step-active">
+1
+</div>
+
+<div>
+
+<h2 class="font-semibold text-[14px]">
+Pacote
+</h2>
+
+<p class="text-[12px] text-[#64748B]">
+Escolha o plano
+</p>
+
+</div>
+
+</div>
+
+<div class="h-[2px] flex-1 bg-[#E2E8F0] mx-4"></div>
+
+<div class="flex items-center gap-3">
+
+<div id="step2" class="step step-inactive">
+2
+</div>
+
+<div>
+
+<h2 class="font-semibold text-[14px]">
+Confirmar
+</h2>
+
+<p class="text-[12px] text-[#64748B]">
+Verifique os dados
+</p>
+
+</div>
+
+</div>
+
+<div class="h-[2px] flex-1 bg-[#E2E8F0] mx-4"></div>
+
+<div class="flex items-center gap-3">
+
+<div id="step3" class="step step-inactive">
+3
+</div>
+
+<div>
+
+<h2 class="font-semibold text-[14px]">
+Pagamento
+</h2>
+
+<p class="text-[12px] text-[#64748B]">
+Finalizar pedido
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ETAPA 1 -->
+
+<section id="etapa1" class="max-w-5xl mx-auto px-4 mt-8">
+
+<div class="card p-6">
+
+<h2 class="text-[22px] font-bold">
+Escolha a operadora
+</h2>
+
+<div class="grid grid-cols-2 gap-4 mt-6">
+
+<button
+onclick="selecionarOperadora('Vodacom',this)"
+class="btn btn-outline operadora-btn"
+>
+
+VODACOM
+
+</button>
+
+<button
+onclick="selecionarOperadora('Movitel',this)"
+class="btn btn-outline operadora-btn"
+>
+
+MOVITEL
+
+</button>
+
+</div>
+
+<input
+id="numero"
+type="number"
+oninput="verificarFormulario()"
+placeholder="Número que irá receber os megas"
+class="w-full h-[58px] rounded-[18px] border border-[#CBD5E1] px-5 mt-5 outline-none"
+/>
+
+</div>
+
+<!-- PACOTES -->
+
+<div class="mt-10">
+
+<h2 class="text-[24px] font-bold mb-5">
+Pacotes de Internet
+</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+<div onclick="selecionarPacote('6GB','50MT',this)" class="card pacote-card p-6">
+<h2 class="text-[32px] font-bold">6GB</h2>
+<p class="text-[#64748B] mt-2">50MT</p>
+</div>
+
+<div onclick="selecionarPacote('15GB','100MT',this)" class="card pacote-card p-6">
+<h2 class="text-[32px] font-bold">15GB</h2>
+<p class="text-[#64748B] mt-2">100MT</p>
+</div>
+
+<div onclick="selecionarPacote('26GB','200MT',this)" class="card pacote-card p-6">
+<h2 class="text-[32px] font-bold">26GB</h2>
+<p class="text-[#64748B] mt-2">200MT</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- PACOTES DIAMANTE -->
+
+<div class="mt-12">
+
+<div class="flex items-center gap-3 mb-5">
+
+<h2 class="text-[24px] font-bold">
+Pacotes Diamante
+</h2>
+
+<div class="bg-[#00D563] text-white px-3 py-1 rounded-full text-[11px] font-bold">
+DIAMANTE
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+<div onclick="selecionarPacote('25GB','350MT',this)" class="card pacote-card p-6">
+<h2 class="text-[34px] font-black">25GB</h2>
+<p class="text-[#64748B] mt-1">350MT</p>
+</div>
+
+<div onclick="selecionarPacote('38GB','500MT',this)" class="card pacote-card p-6">
+<h2 class="text-[34px] font-black">38GB</h2>
+<p class="text-[#64748B] mt-1">500MT</p>
+</div>
+
+<div onclick="selecionarPacote('70GB','800MT',this)" class="card pacote-card p-6">
+<h2 class="text-[34px] font-black">70GB</h2>
+<p class="text-[#64748B] mt-1">800MT</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- FAQ -->
+
+<section class="mt-12">
+
+<h2 class="text-[28px] font-bold text-center">
+Perguntas Frequentes
+</h2>
+
+<div class="space-y-4 mt-8">
+
+<div class="card p-6">
+<h2 class="font-bold">
+Quanto tempo demora a ativação?
+</h2>
+
+<p class="text-[#64748B] mt-2">
+A ativação normalmente acontece em menos de 1 minuto após análise.
+</p>
+</div>
+
+<div class="card p-6">
+<h2 class="font-bold">
+Os pacotes têm validade?
+</h2>
+
+<p class="text-[#64748B] mt-2">
+Todos os pacotes possuem validade de 30 dias.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- AJUDA -->
+
+<div class="card p-6 mt-8">
+
+<h2 class="text-[20px] font-bold text-center">
+Precisa de ajuda?
+</h2>
+
+<div class="grid grid-cols-2 gap-4 mt-5">
+
+<a
+href="mailto:internet@suporte.co.mz"
+class="btn btn-outline flex items-center justify-center gap-2"
+>
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>Email</span>
+
+</a>
+
+<a
+href="https://wa.me/258875815886"
+target="_blank"
+class="btn btn-primary flex items-center justify-center gap-2"
+>
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<span>WhatsApp</span>
+
+</a>
+
+</div>
+
+</div>
+
+<div id="btnEtapa1" class="hidden sticky bottom-5 mt-10">
+
+<button
+onclick="abrirEtapa2()"
+class="btn btn-primary w-full"
+>
+
+Continuar pagamento
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ETAPA 2 -->
+
+<section
+id="etapa2"
+class="hidden max-w-5xl mx-auto px-4 mt-8"
+>
+
+<div class="card p-6">
+
+<h2 class="text-[24px] font-bold">
+Finalizar Pedido
+</h2>
+
+<div class="space-y-5 mt-8">
+
+<div>
+<p class="text-[#64748B] text-[14px]">Número</p>
+<h2 id="numeroCheckout" class="font-bold text-[20px]"></h2>
+</div>
+
+<div>
+<p class="text-[#64748B] text-[14px]">Operadora</p>
+<h2 id="operadoraCheckout" class="font-bold text-[20px]"></h2>
+</div>
+
+<div>
+<p class="text-[#64748B] text-[14px]">Pacote</p>
+<h2 id="pacoteCheckout" class="font-bold text-[20px]"></h2>
+</div>
+
+<div class="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[20px] p-5 flex items-center justify-between">
+
+<p class="text-[#64748B]">
+Valor
+</p>
+
+<h2 id="valorCheckout" class="text-[28px] font-black text-[#00D563]"></h2>
+
+</div>
+
+<button
+onclick="abrirEtapa3()"
+class="btn btn-primary w-full"
+>
+
+Pagar Agora
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ETAPA 3 -->
+
+<section
+id="etapa3"
+class="hidden max-w-5xl mx-auto px-4 mt-8 mb-10"
+>
+
+<div class="card p-6">
+
+<h2 class="text-[24px] font-bold">
+Pagamento
+</h2>
+
+<div class="card p-6 mt-6">
+
+<div class="flex items-center gap-3">
+
+<div class="spinner"></div>
+
+<div>
+
+<h2 class="text-[20px] font-bold">
+Aguardando confirmação
+</h2>
+
+<p class="text-[#64748B] text-[13px] mt-1">
+Envie o comprovante para análise
+</p>
+
+</div>
+
+</div>
+
+<div class="progress-line mt-6">
+<div></div>
+</div>
+
+</div>
+
+<div class="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[24px] p-6 mt-8">
+
+<p class="text-center text-[#64748B] text-[13px]">
+Pagamento via eMola
+</p>
+
+<h2 class="text-center text-[32px] font-black mt-5">
+874475405
+</h2>
+
+<p class="text-center text-[#64748B] mt-2">
+VINHA MARIO
+</p>
+
+<button
+onclick="copiarNumero()"
+class="btn btn-outline w-full mt-6"
+>
+
+Copiar número
+
+</button>
+
+</div>
+
+<div class="mt-8">
+
+<h2 class="font-bold text-[20px]">
+Como fazer o pagamento
+</h2>
+
+<div class="space-y-4 mt-5">
+
+<div class="card p-5">
+<h2 class="font-bold">
+1. Abra o aplicativo eMola
+</h2>
+</div>
+
+<div class="card p-5">
+<h2 class="font-bold">
+2. Envie o valor exato do pacote
+</h2>
+</div>
+
+<div class="card p-5">
+<h2 class="font-bold">
+3. Envie o comprovante abaixo
+</h2>
+</div>
+
+</div>
+
+</div>
+
+<div class="mt-10">
+
+<label
+for="comprovante"
+class="upload-area"
+>
+
+<i class="fa-solid fa-cloud-arrow-up text-[55px] text-[#94A3B8]"></i>
+
+<h2 class="font-bold text-[18px] mt-5">
+Enviar comprovante
+</h2>
+
+<p class="text-[#64748B] text-[14px] mt-2">
+PNG, JPG ou JPEG
+</p>
+
+<input
+type="file"
+id="comprovante"
+accept="image/*"
+class="hidden"
+onchange="previewImagem(event)"
+>
+
+</label>
+
+<div
+id="previewContainer"
+class="hidden mt-5"
+>
+
+<img
+id="preview"
+class="w-full rounded-[20px]"
+>
+
+</div>
+
+<button
+onclick="enviarComprovante()"
+class="btn btn-primary w-full mt-6"
+>
+
+Enviar comprovante
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="mt-20 bg-[#082B5B] text-white">
+
+<div class="max-w-5xl mx-auto px-6 py-14">
+
+<div class="text-center">
+
+<h2 class="text-[52px] font-black">
+
+CONEXÃO
+<span class="text-[#00D563]">
+BARATA
+</span>
+
+</h2>
+
+<p class="text-[#D7DFEA] text-[15px] leading-8 mt-6 max-w-[700px] mx-auto">
+
+CONEXÃO BARATA atua há mais de 3 anos no mercado de ativações de internet móvel em Moçambique, oferecendo pacotes Vodacom e Movitel com atendimento rápido, suporte profissional e milhares de clientes atendidos diariamente através a AGENTE VINHA.
+
+</p>
+
+<div class="grid grid-cols-3 gap-4 mt-10 max-w-[650px] mx-auto">
+
+<div class="bg-white/10 border border-white/10 rounded-[18px] p-4 text-center">
+
+<h2 class="text-[22px] font-black text-white">
+3+
+</h2>
+
+<p class="text-[#D7DFEA] text-[12px] mt-1">
+Anos
+</p>
+
+</div>
+
+<div class="bg-white/10 border border-white/10 rounded-[18px] p-4 text-center">
+
+<h2 class="text-[22px] font-black text-white">
+12K+
+</h2>
+
+<p class="text-[#D7DFEA] text-[12px] mt-1">
+Clientes
+</p>
+
+</div>
+
+<div class="bg-white/10 border border-white/10 rounded-[18px] p-4 text-center">
+
+<h2 class="text-[22px] font-black text-white">
+24H
+</h2>
+
+<p class="text-[#D7DFEA] text-[12px] mt-1">
+Suporte
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
+
+<div class="bg-white/10 border border-white/10 rounded-[24px] p-6 text-center">
+
+<div class="w-14 h-14 rounded-full bg-[#00D563] flex items-center justify-center mx-auto">
+
+<i class="fa-solid fa-shield-halved text-white"></i>
+
+</div>
+
+<h2 class="font-bold text-[20px] mt-5">
+100% Seguro
+</h2>
+
+<p class="text-[#D7DFEA] text-[14px] mt-3">
+Conexão protegida por SSL.
+</p>
+
+</div>
+
+<div class="bg-white/10 border border-white/10 rounded-[24px] p-6 text-center">
+
+<div class="w-14 h-14 rounded-full bg-[#00D563] flex items-center justify-center mx-auto">
+
+<i class="fa-solid fa-bolt text-white"></i>
+
+</div>
+
+<h2 class="font-bold text-[20px] mt-5">
+Entrega Imediata
+</h2>
+
+<p class="text-[#D7DFEA] text-[14px] mt-3">
+Ativação rápida após confirmação.
+</p>
+
+</div>
+
+<div class="bg-white/10 border border-white/10 rounded-[24px] p-6 text-center">
+
+<div class="w-14 h-14 rounded-full bg-[#00D563] flex items-center justify-center mx-auto">
+
+<i class="fa-solid fa-award text-white"></i>
+
+</div>
+
+<h2 class="font-bold text-[20px] mt-5">
+Suporte
+</h2>
+
+<p class="text-[#D7DFEA] text-[14px] mt-3">
+Atendimento disponível no WhatsApp.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+let operadora = "";
+let pacote = "";
+let valor = "";
+
+function selecionarOperadora(op,el){
+
+operadora = op;
+
+document
+.querySelectorAll(".operadora-btn")
+.forEach(btn => {
+
+btn.style.borderColor = "#CBD5E1";
+btn.style.color = "#0F172A";
+btn.style.background = "white";
+
+});
+
+const cores = {
+
+Vodacom:{
+principal:"#DC2626",
+claro:"#FEF2F2"
+},
+
+Movitel:{
+principal:"#F97316",
+claro:"#FFF7ED"
+}
+
+};
+
+el.style.borderColor =
+cores[op].principal;
+
+el.style.color =
+cores[op].principal;
+
+el.style.background =
+cores[op].claro;
+
+document
+.querySelectorAll(".btn-primary")
+.forEach(btn => {
+
+btn.style.background =
+cores[op].principal;
+
+});
+
+verificarFormulario();
+
+}
+
+function selecionarPacote(p,v,el){
+
+pacote = p;
+valor = v;
+
+document
+.querySelectorAll(".pacote-card")
+.forEach(card => {
+
+card.classList.remove("active");
+
+card.style.borderColor =
+"#E2E8F0";
+
+card.style.background =
+"white";
+
+const badge =
+card.querySelector(".badge-check");
+
+if(badge){
+badge.remove();
+}
+
+});
+
+el.classList.add("active");
+
+const badge =
+document.createElement("div");
+
+badge.className = "badge-check";
+
+badge.innerHTML = "✓";
+
+if(operadora === "Vodacom"){
+
+el.style.border = "2px solid #DC2626";
+el.style.background = "#FEF2F2";
+
+badge.style.background = "#DC2626";
+
+}
+
+if(operadora === "Movitel"){
+
+el.style.border = "2px solid #F97316";
+el.style.background = "#FFF7ED";
+
+badge.style.background = "#F97316";
+
+}
+
+el.appendChild(badge);
+
+verificarFormulario();
+
+}
+
+function verificarFormulario(){
+
+const numero =
+document.getElementById("numero").value;
+
+if(
+operadora !== "" &&
+pacote !== "" &&
+numero.length >= 8
+){
+
+document
+.getElementById("btnEtapa1")
+.classList.remove("hidden");
+
+}else{
+
+document
+.getElementById("btnEtapa1")
+.classList.add("hidden");
+
+}
+
+}
+
+function abrirEtapa2(){
+
+document
+.getElementById("etapa1")
+.classList.add("hidden");
+
+document
+.getElementById("etapa2")
+.classList.remove("hidden");
+
+document.getElementById("step2")
+.classList.remove("step-inactive");
+
+document.getElementById("step2")
+.classList.add("step-active");
+
+document
+.getElementById("numeroCheckout")
+.innerText =
+document.getElementById("numero").value;
+
+document
+.getElementById("operadoraCheckout")
+.innerText =
+operadora;
+
+document
+.getElementById("pacoteCheckout")
+.innerText =
+pacote;
+
+document
+.getElementById("valorCheckout")
+.innerText =
+valor;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function abrirEtapa3(){
+
+document
+.getElementById("etapa2")
+.classList.add("hidden");
+
+document
+.getElementById("etapa3")
+.classList.remove("hidden");
+
+document.getElementById("step3")
+.classList.remove("step-inactive");
+
+document.getElementById("step3")
+.classList.add("step-active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function copiarNumero(){
+
+navigator.clipboard.writeText(
+"874475405"
+);
+
+toast("Número copiado.");
+
+}
+
+function previewImagem(event){
+
+const file =
+event.target.files[0];
+
+if(!file){
+return;
+}
+
+const reader =
+new FileReader();
+
+reader.onload = function(e){
+
+document.getElementById("preview")
+.src = e.target.result;
+
+document.getElementById("previewContainer")
+.classList.remove("hidden");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+function enviarComprovante(){
+
+const file =
+document.getElementById("comprovante").files[0];
+
+if(!file){
+
+toast("Envie o comprovante.");
+
+return;
+
+}
+
+toast("Comprovante enviado para análise.");
+
+}
+
+function toast(msg){
+
+const div =
+document.createElement("div");
+
+div.className = "toast";
+
+div.innerHTML = `
+<i class="fa-solid fa-circle-check"></i>
+<span>${msg}</span>
+`;
+
+document.body.appendChild(div);
+
+setTimeout(() => {
+
+div.remove();
+
+},3000);
+
+}
+
+const ativacoes = [
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 6GB para o número 87****521 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 15GB para o número 84****221 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 26GB para o número 86****903 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 39GB para o número 85****102 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 51GB para o número 87****663 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 80GB para o número 84****918 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 9GB para o número 85****447 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 6GB para o número 86****310 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 15GB para o número 84****774 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 26GB para o número 87****185 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 39GB para o número 85****920 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 25GB + chamadas e SMS ilimitadas para o número 86****771 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 38GB + chamadas e SMS ilimitadas para o número 85****456 válidos por 30 dias."
+},
+
+{
+operadora:"Vodacom",
+cor:"#DC2626",
+mensagem:"Foram enviados 70GB + chamadas e SMS ilimitadas para o número 84****619 válidos por 30 dias."
+},
+
+{
+operadora:"Movitel",
+cor:"#F97316",
+mensagem:"Foram enviados 51GB para o número 87****240 válidos por 30 dias."
+}
+
+];
+
+function mostrarAtivacao(){
+
+const toast =
+document.getElementById("saleToast");
+
+const title =
+document.getElementById("saleTitle");
+
+const random =
+ativacoes[
+Math.floor(
+Math.random() * ativacoes.length
+)
+];
+
+title.innerText =
+random.mensagem;
+
+toast.style.border =
+`2px solid ${random.cor}`;
+
+title.style.color =
+random.cor;
+
+toast.classList.remove("hidden");
+
+setTimeout(() => {
+
+toast.classList.add("hidden");
+
+},4000);
+
+}
+
+setInterval(() => {
+
+mostrarAtivacao();
+
+},12000);
+
+setTimeout(() => {
+
+mostrarAtivacao();
+
+},3000);
+
+</script>
+
+<!-- ATIVAÇÕES RECENTES -->
+
+<div
+id="liveSales"
+class="fixed bottom-5 left-5 z-50"
+>
+
+<div
+id="saleToast"
+class="bg-white border border-[#E2E8F0] shadow-2xl rounded-[20px] px-5 py-4 min-w-[280px] hidden"
+>
+
+<div class="flex items-start gap-3">
+
+<div class="w-11 h-11 rounded-full bg-[#ECFDF5] flex items-center justify-center">
+
+<i class="fa-solid fa-wifi text-[#00D563]"></i>
+
+</div>
+
+<div>
+
+<h2
+id="saleTitle"
+class="font-bold text-[15px]"
+>
+João ativou 6GB
+</h2>
+
+<p
+class="text-[#64748B] text-[13px] mt-1"
+>
+Agora mesmo
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
